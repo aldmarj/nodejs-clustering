@@ -21,7 +21,8 @@ if(cluster.isMaster) {
     var app = require('express')();
     app.all('/*', function(req, res) {res.send('process ' + process.pid + ' says hello!').end();})
 
-    var server = app.listen(3000, function() {
+    var port = process.env.PORT || 3000;
+    var server = app.listen(port, function() {
         console.log('Process ' + process.pid + ' is listening to all incoming requests');
     });
 }
